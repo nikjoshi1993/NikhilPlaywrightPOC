@@ -1,6 +1,6 @@
 // UI Automation Test Suite using Page Object Model and Playwright standards
 const { test, expect, describe } = require('@playwright/test');
-const { TodoPage } = require('./pages');
+const { TodoPage } = require('../page_objects/pages');
 
 describe('TodoMVC UI Automation', () => {
   test('should add a new todo item', async ({ page }) => {
