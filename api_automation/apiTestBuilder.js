@@ -48,7 +48,7 @@ class ApiTestBuilder {
     return this;
   }
 
-  async run() {
+  async execute() {
     const apiRequest = await request.newContext();
     const response = await apiRequest.fetch(this._url, {
       method: this._method,
