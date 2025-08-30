@@ -1,19 +1,14 @@
-class AddItems {
-    constructor(page) {
-        this.page = page;
-    }
+const sauceDemoPage = require('../pages/sauceDemoPage');
 
-    async addItemToCart(itemSelector, addToCartButtonSelector) {
-        await this.page.waitForSelector(addToCartButtonSelector);
-        await this.page.click(itemSelector);
-
-    }
-
-    async addMultipleItemsToCart(items) {
-        for (const { itemSelector, addToCartButtonSelector } of items) {
-            await this.addItemToCart(itemSelector, addToCartButtonSelector);
-        }
+/**
+ * Adds multiple items to the cart using their names.
+ * @param {object} page - Playwright page object.
+ * @param {string[]} itemNames - Array of item names to add to cart.
+ */
+async function addItemsToCart(page, itemNames) {
+    for (const name of itemNames) {
+        await sauceDemoPage.addItemByName(page, name);
     }
 }
 
-module.exports = AddItems;
+module.exports = { addItemsToCart };

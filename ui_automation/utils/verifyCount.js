@@ -1,17 +1,17 @@
 /**
- * Utility function to verify the count of card elements on a page.
- * @param {import('@playwright/test').Page} page - Playwright page object.
- * @param {string} cardSelector - CSS selector for the card elements.
- * @param {number} expectedCount - Expected number of cards.
- * @returns {Promise<void>}
+ * Common utility to verify item quantities in the cart using methods from cartPage and sauceDemoPage.
+ * @param {Object} cartPage - Instance of cartPage with verifyItemQuantity method.
+ * @param {Object} sauceDemoPage - Instance of sauceDemoPage with verifyCartCount method.
+ * @param {Array<{item: string, quantity: number}>} items - Array of items and their expected quantities.
  */
-async function verifyCardCount(page, cardSelector, expectedCount) {
-    const cards = await page.$$(cardSelector);
-    if (cards.length !== expectedCount) {
-        throw new Error(
-            `Expected ${expectedCount} cards, but found ${cards.length}.`
-        );
+async function verifyAllItemQuantities(cartPage, sauceDemoPage, items) {
+    for (const { item, quantity } of items) {
+        // Verify individual item quantity in the cart
+        await cartPage.verifyItemQuantity(item, quantity);
     }
+    // Verify total cart count matches sum of quantities
+    const totalQuantity = items.reduce((sum, i) => sum + i.quantity, 0);
+    await sauceDemoPage.verifyCartCount(totalQuantity);
 }
 
-module.exports = { verifyCardCount };
+module.exports = { verifyAllItemQuantities };
