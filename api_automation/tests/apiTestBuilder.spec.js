@@ -1,6 +1,6 @@
 // API Test Suite using ApiTestBuilder and Playwright standards
 const { test, expect, describe } = require('@playwright/test');
-const { ApiTestBuilder } = require('./apiTestBuilder');
+const { ApiTestBuilder } = require('../apiTestBuilder');
 
 // Boilerplate: Sample schemas
 const postSchema = {
