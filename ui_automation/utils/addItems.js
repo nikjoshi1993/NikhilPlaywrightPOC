@@ -1,4 +1,4 @@
-const sauceDemoPage = require('../pages/sauceDemoPage');
+import { sauceDemoPage } from '../page_objects/sauceDemoPage';
 
 /**
  * Adds multiple items to the cart using their names.

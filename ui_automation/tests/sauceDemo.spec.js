@@ -1,18 +1,30 @@
 const { test, expect } = require('@playwright/test');
-const LoginPage = require('../pageObjects/LoginPage');
-const InventoryPage = require('../pageObjects/InventoryPage');
-const CartPage = require('../pageObjects/CartPage');
-const utils = require('../utils/utils');
+const loginUtils = require('../utils/login');
 
 test.describe('Sauce Demo - Add Items to Cart and Verify', () => {
-  test('Add backpack and bike light, verify cart quantities and icon count', async ({ page }) => {
-    // Navigate to Sauce Demo
+  test.describe.configure({ mode: 'serial' });
+
+  let context, page;
+
+  test('Login', async ({ browser }) => {
+    context = await browser.newContext();
+    page = await context.newPage();
     await page.goto('https://www.saucedemo.com/');
-
     // Login using page object and utils
-    const loginPage = new LoginPage(page);
-    await utils.login(loginPage, 'standard_user', 'secret_sauce');
-
+    await loginUtils.login(page, 'standard_user', 'secret_sauce');
 
   });
+
+  test('Add Items to Cart and verify count on cart icon', async () => {
+    // Add first item to cart
+    
+  });
+
+  test('Go to cart and veriofy that items are added or not', async () => {
+    // Add second item to cart
+    
+  });
+
+
+
 });
