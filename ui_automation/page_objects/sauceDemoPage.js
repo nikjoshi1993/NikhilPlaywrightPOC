@@ -1,5 +1,5 @@
 // Page Object Model for SauceDemo (Swag Labs)
-class SauceDemoPage {
+class sauceDemoPage {
   /**
    * @param {import('@playwright/test').Page} page
    */
@@ -25,4 +25,4 @@ class SauceDemoPage {
   }
 }
 
-module.exports = { SauceDemoPage };
+module.exports = { sauceDemoPage };

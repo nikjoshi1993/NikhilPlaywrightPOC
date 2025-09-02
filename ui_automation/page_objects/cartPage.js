@@ -1,6 +1,6 @@
 const { expect } = require('@playwright/test');
 
-class CartPage {
+class cartPage {
     /**
      * @param {import('@playwright/test').Page} page
      */
@@ -46,4 +46,4 @@ class CartPage {
     }
 }
 
-module.exports = { CartPage };
+module.exports = { cartPage };

@@ -1,5 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const loginUtils = require('../utils/login');
+const addItemsUtils = require('../utils/addItems');
+const verifycart = require('../utils/verifyCount');
 
 test.describe('Sauce Demo - Add Items to Cart and Verify', () => {
   test.describe.configure({ mode: 'serial' });
@@ -17,6 +19,7 @@ test.describe('Sauce Demo - Add Items to Cart and Verify', () => {
 
   test('Add Items to Cart and verify count on cart icon', async () => {
     // Add first item to cart
+    await addItemsUtils.addItemsToCart(page, [["sauce-labs-backpack"],["sauce-labs-bike-light"]]);
     
   });
 

@@ -6,8 +6,9 @@ import { sauceDemoPage } from '../page_objects/sauceDemoPage';
  * @param {string[]} itemNames - Array of item names to add to cart.
  */
 async function addItemsToCart(page, itemNames) {
+    const saucePage = new sauceDemoPage(page);
     for (const name of itemNames) {
-        await sauceDemoPage.addItemByName(page, name);
+        await saucePage.addItemByName(name);
     }
 }
 
